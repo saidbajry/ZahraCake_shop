@@ -1,0 +1,75 @@
+:root {
+    --primary: #fdf0f0;
+    --maroon: #641e16;
+    --gold: #d4a373;
+    --white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background: var(--primary); color: var(--maroon); overflow-x: hidden; }
+
+/* Navbar Slim & Glassmorphism */
+nav {
+    position: fixed; width: 100%; top: 0; padding: 10px 5%;
+    background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
+    z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto; }
+.logo { font-family: 'Great Vibes', cursive; font-size: 28px; font-weight: bold; }
+.logo span { color: var(--gold); }
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a { text-decoration: none; color: var(--maroon); font-weight: 600; font-size: 14px; transition: 0.3s; }
+.nav-links a:hover { color: var(--gold); }
+
+/* Hero Section */
+.hero {
+    height: 70vh; display: flex; align-items: center; justify-content: center;
+    text-align: center; background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.4)), 
+    url('https://images.unsplash.com/photo-1519340333755-507212522381?q=80&w=1500') center/cover;
+}
+.main-title { font-family: 'Great Vibes', cursive; font-size: 4rem; margin: 10px 0; }
+.btn-wa-main {
+    background: #5d6d31; color: white; padding: 12px 30px; border-radius: 30px;
+    text-decoration: none; font-weight: bold; display: inline-block; transition: 0.3s;
+}
+
+/* --- ANIMASI ETALASE --- */
+#etalase { padding: 80px 10%; text-align: center; }
+.cake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+
+/* Keadaan Awal (Di luar layar) */
+.cake-card {
+    background: white; padding: 20px; border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); opacity: 0; transition: all 1s ease-out;
+}
+
+/* Kartu urutan ganjil masuk dari kiri */
+.cake-card.from-left { transform: translateX(-100px); }
+/* Kartu urutan genap masuk dari kanan */
+.cake-card.from-right { transform: translateX(100px); }
+
+/* Keadaan Setelah Aktif (Masuk ke dalam) */
+.cake-card.appear {
+    opacity: 1; transform: translateX(0);
+}
+
+.cake-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; }
+.price { font-weight: bold; color: var(--gold); font-size: 1.2rem; margin: 10px 0; }
+
+/* Lokasi */
+#lokasi { padding: 60px 10%; background: white; }
+.location-card { display: flex; flex-wrap: wrap; gap: 30px; align-items: center; justify-content: center; }
+.map-frame { flex: 1; min-width: 300px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute; top: 100%; left: 0; width: 100%; background: white;
+        flex-direction: column; padding: 20px; display: none;
+    }
+    .nav-links.active { display: flex; }
+    .menu-toggle { display: block; cursor: pointer; }
+    .bar { display: block; width: 25px; height: 3px; background: var(--maroon); margin: 5px; }
+    .nav-contact { display: none; }
+}
